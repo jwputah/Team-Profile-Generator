@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
-const Manager = require('./lib/Manager');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern');
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
 const fs = require('fs');
 const genTeam = require('./dist/genTeam');
 
@@ -32,26 +32,31 @@ const managerQuestions = () => {
         },
         {
             type: 'list',
-            name: 'addTeam',
+            name: 'addRole',
             message: 'Select team member to add',
-            choices: ['Engineer', 'Intern', 'All done! no more team members to add'],
+            choices: ['Manager', 'Engineer', 'Intern', 'All done! no more team members to add'],
         }
     ])
     .then((managerAnswers) => {
         const manager = new Manager(managerAnswers.name, managerAnswers.id, managerAnswers.email, managerAnswers.officeNumber)
         newTeam.push(manager)
-        switch(managerAnswers.addTeam) {
+        switch(managerAnswers.addRole) {
+            case 'Manager':
+                managerQuestions ();
+                break;
+
             case 'Engineer':
                 engineerQuestions ();
                 break;
+
             case 'Intern':
                 internQuestions ();
                 break;
 
-                default:
-                    writeToFile('dist/index.html', genTeam(newTeam))
+            default:
+                writeToFile('dist/index.html', genTeam(newTeam))
         }
-    })
+    });
 };
 
 const engineerQuestions = () => {
@@ -78,26 +83,31 @@ const engineerQuestions = () => {
         },
         {
             type: 'list',
-            name: 'addMember',
+            name: 'addRole',
             message: 'Select team member to add',
-            choices: ['Engineer', 'Intern', 'All done! no more team members to add'],
+            choices: ['Manager', 'Engineer', 'Intern', 'All done! no more team members to add'],
         }
     ])
     .then((engineerAnswers) => {
         const engineer = new Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.gitHub)
         newTeam.push(engineer)
-        switch(engineerAnswers.addTeam) {
-            case 'Engineer':
-                engineerQuestions();
-                break;
-            case 'Intern':
-                internQuestions();
+        switch(engineerAnswers.addRole) {
+            case 'Manager':
+                managerQuestions ();
                 break;
 
-                default: 
+            case 'Engineer':
+                engineerQuestions ();
+                break;
+
+            case 'Intern':
+                internQuestions ();
+                break;
+
+            default: 
                 writeToFile('dist/index.html', genTeam(newTeam))
         }
-    })
+    });
 };
 
 const internQuestions = () => {
@@ -124,26 +134,31 @@ const internQuestions = () => {
         },
         {
             type: 'list',
-            name: 'addMember',
+            name: 'addRole',
             message: 'Select team member to add',
-            choices: ['Engineer', 'Intern', 'All done! no more team members to add'],
+            choices: ['Manager', 'Engineer', 'Intern', 'All done! no more team members to add'],
         }
     ])
     .then((internAnswers) => {
         const intern = new Intern(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.school)
         newTeam.push(intern)
-        switch(internAnswers.addTeam) {
+        switch(internAnswers.addRole) {
+            case 'Manager':
+                managerQuestions ();
+                break;
+
             case 'Engineer':
                 engineerQuestions ();
                 break;
+
             case 'Intern':
                 internQuestions ();
                 break;
 
-                default:
-                    writeToFile('dist/index.html', genTeam(newTeam))
+            default:
+                writeToFile('dist/index.html', genTeam(newTeam))
         }
-    })
+    });
 };
 
 managerQuestions ();
@@ -151,6 +166,7 @@ managerQuestions ();
 function writeToFile(filename, data) {
     fs.writeFile(filename, data, (err) => {
         if(err) throw err;
-        console.log('file saved')
+        console.log('index.html file saved in dist folder')
+        console.log(newTeam);
     });
 };
