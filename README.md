@@ -3,6 +3,7 @@
 --------
 
 ![Sample HTML](./dist/index.html)
+![Sample HTML](./src/images.samplehtml.png)
 
 --------
 
@@ -30,7 +31,9 @@ Clone repository from Github. Run npm install.
 #### Usage
 Run node index.js. Answer questions about project. And a high quality index.html file will be created.
 
-![Walkthrough Video](./src/images/walkthrough-team-profile.gif)
+
+![walkthrough-team-profile](https://user-images.githubusercontent.com/94497268/156701253-915aad9b-5d22-4f5d-8846-67d40c8fdd66.gif)
+![Walkthrough Video](.src/images/team-profile-generator.mov)
 
 ----
 
@@ -42,7 +45,9 @@ Joshua Pace
 #### Test
 Run npm install. Run npm run test.
 
-![Tests Walkthrough Video](./src/images/walkthrough-team-profile-test.gif)
+
+![walkthrough-team-profile-test](https://user-images.githubusercontent.com/94497268/156701124-d299c43b-e394-48e9-b893-64fd0d30c3ca.gif)
+![Tests Walkthrough Video](.src/images/walkthrough-team-profile-test.mp4)
 
 ----
 
