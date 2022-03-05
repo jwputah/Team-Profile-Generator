@@ -34,7 +34,7 @@ Clone repository from Github. Run npm install.
 Run node index.js. Answer questions about project. And a high quality index.html file will be created.
 
 
-![Walkthrough Video](.src/images/walkthrough.gif)
+![Walkthrough Video](./src/images/walkthrough.gif)
 
 ----
 
@@ -47,7 +47,7 @@ Joshua Pace
 Run npm install. Run npm run test.
 
 
-![Tests Walkthrough Video](.src/images/walkthroughtests.gif)
+![Tests Walkthrough Video](./src/images/walkthroughtests.gif)
 
 ----
 
